@@ -1,0 +1,96 @@
+<!-- <!DOCTYPE html>
+<html> -->
+<head>
+    <meta charset="UTF-8">
+    <title>Excel导出测试</title>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+    <div id="app">
+        <el-row>
+            <el-col :span="24">
+                <el-button type="primary" @click="exportFile" size="mini">导出</el-button>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="24">
+                <el-table :data="tableData" height="650" border style="width: 99%;margin-top: 50px;">
+                    <el-table-column prop="name" label="姓名">
+                    </el-table-column>
+                    <el-table-column prop="age" label="年龄">
+                    </el-table-column>
+                    <el-table-column prop="address" label="住址">
+                    </el-table-column>
+                    <el-table-column prop="hobby" label="兴趣爱好">
+                    </el-table-column>
+                </el-table>
+            </el-col>
+        </el-row>
+    </div>
+</body>
+<!-- import Vue before Element -->
+<script src="vue.js"></script>
+<!-- import JavaScript -->
+<script src="index.js"></script>
+<script src="exportExcel.js"></script>
+<script src="axios.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                tableData: [{
+                    "name": "小明",
+                    "age": 35,
+                    "address": "苏州",
+                    "hobby": "音乐"
+                }, {
+                    "name": "小李",
+                    "age": 30,
+                    "address": "北京",
+                    "hobby": "读书、跑步"
+                }, {
+                    "name": "张三",
+                    "age": 28,
+                    "address": "南京",
+                    "hobby": "美食"
+                }, {
+                    "name": "小明",
+                    "age": 35,
+                    "address": "苏州",
+                    "hobby": "音乐"
+                }, {
+                    "name": "王五",
+                    "age": 38,
+                    "address": "上海",
+                    "hobby": "健身"
+                }, {
+                    "name": "李四",
+                    "age": 33,
+                    "address": "深圳",
+                    "hobby": "户外运动"
+                }]
+            }
+
+        },
+        mounted() {
+
+
+        },
+        methods: {
+            onSearch() {
+                // 一般都是通过后台接口获取数据进行导出操作
+            },
+            // 导出文件    
+            exportFile() {
+                var self = this;
+                var columnNames = ['姓名', '年龄', '住址', '兴趣爱好'];
+                var columnDatas = ['name', 'age', 'address', 'hobby'];
+                exportExcel(name + "人员信息导出.xlsx", columnDatas, columnNames, self.tableData,);
+            }
+        }
+    })
+</script>
+
+</html>
